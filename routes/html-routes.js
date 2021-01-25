@@ -11,4 +11,7 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "./exercise.html"))
     })
     //HTML ROUTE FOR "/STATS"
+    app.get("/stats", (req,res) => {
+        res.sendFile(path.join(__dirname, "./stats.html"))
+    })
 }
