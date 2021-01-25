@@ -15,6 +15,11 @@ router.get("/api/workouts", (req,res) => {
 //API ROUTE TO GET/FIND 
 
 //API ROUTE TO POST/CREATE A NEW WORKOUT
-
+router.post("/api/workouts", ({ body },res) => {
+    db.Workout.insert(body, (err,data) => {
+        if(err) throw err;
+        res.json(data);
+    })
+})
 //API ROUTE TO PUT/UPDATE A WORKOUT
 }
