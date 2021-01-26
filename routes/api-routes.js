@@ -23,7 +23,12 @@ module.exports = function (app) {
     // });
 
     //API ROUTE TO POST/CREATE A NEW WORKOUT
-
+    app.post("/api/workouts", (req,res) => {
+        Workout.create({}, (err, data) => {
+            if (err) throw err;
+            res.json(data);
+        });
+    });
 
     //API ROUTE TO PUT/UPDATE A WORKOUT
     app.put("/api/workouts/:id", ({ body, params }, res) => {
