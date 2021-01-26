@@ -15,12 +15,12 @@ module.exports = function (app) {
     });
 
     //API ROUTE TO GET/FIND 
-    // app.get("/api/workouts/range", (req, res) => {
-    //     Workout.find({}, (err, data) => {
-    //         if (err) throw err;
-    //         res.json(data);
-    //     });
-    // });
+    app.get("/api/workouts/range", (req, res) => {
+        Workout.find({}, (err, data) => {
+            if (err) throw err;
+            res.json(data);
+        });
+    });
 
     //API ROUTE TO POST/CREATE A NEW WORKOUT
     app.post("/api/workouts", (req,res) => {
@@ -32,7 +32,7 @@ module.exports = function (app) {
 
     //API ROUTE TO PUT/UPDATE A WORKOUT
     app.put("/api/workouts/:id", ({ body, params }, res) => {
-        Workout.findByIdAndUpdate(params.id, { $set: { exercise : body } }, (err, data) => {
+        Workout.findByIdAndUpdate(params.id, { $push: { exercises : body } }, (err, data) => {
             if (err) throw err;
             res.json(data);
         })
