@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;
 
 //MODEL SCHEMA FOR WORKOUT COLLECTION AND EXERCISE OBJECTS
 const newWorkout = new Schema({
-    exercise: [{
+    day: {
+        type: Date,
+        default: Date.now()
+    },
+    exercises: [{
         type: {
             type: String,
             required: "Type of workout is required"
