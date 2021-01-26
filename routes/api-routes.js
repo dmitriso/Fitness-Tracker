@@ -34,5 +34,10 @@ module.exports = function (app) {
         });
     });
 
-
+    //API ROUTE TO PUT/UPDATE A WORKOUT
+    app.put("/api/workouts/:id", ({ body, params }, res) => {
+        Workout.findByIdAndUpdate(params.id, { $push: { exercise: body } }, (err, data) => {
+            if (err) throw err;
+        })
+    })
 }
