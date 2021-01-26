@@ -17,11 +17,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useFindAndModify: false
 });
 
-// ROUTES
+//ROUTES
 require("./routes/api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
-// APP LISTEN
+//APP LISTEN
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
 });
