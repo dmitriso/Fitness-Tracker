@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 //MODEL SCHEMA FOR WORKOUT COLLECTION AND EXERCISE OBJECTS
-const newWorkout = new Schema({
+const WorkoutSchema = new Schema({
     day: {
         type: Date,
         default: Date.now()
@@ -10,7 +10,7 @@ const newWorkout = new Schema({
     exercises: [{
         type: {
             type: String,
-            required: "Type of workout is required"
+            required: "Type of workout is required!"
         },
         name: {
             type: String,
@@ -23,7 +23,7 @@ const newWorkout = new Schema({
         },
         duration: {
             type: Number,
-            required: "Duration is required!"
+            required: "The duration is required!"
         },
         weight: {
             type: Number,
@@ -38,9 +38,19 @@ const newWorkout = new Schema({
             required: "The number of reps is required!"
         },
     }]
+},{toJSON: { virtuals: true }}
+);
+
+
+//METHOD FOR COMPUTING THE TOTAL DURATION
+WorkoutSchema.virtual("totalDuration").get(function () {
+    return this.exercises.reduce((total,exercise) => {
+        return total + exercise.duration
+    }, 0);
 });
 
-const Workout = mongoose.model("Workout", newWorkout);
+
+const Workout = mongoose.model("Workout", WorkoutSchema);
 //EXPORTING MODULE
 module.exports = Workout;
 
