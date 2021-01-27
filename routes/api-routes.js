@@ -1,14 +1,15 @@
 //API ROUTES
 //REQUIRING DEPENDENCIES
 const mongoose = require("mongoose");
-const Workout = require("../models/workout.js");
+// const Workout = require("../models/workout.js");
+const db = require("../models");
 
 
 //EXPORTING MODULE
 module.exports = function (app) {
     //API ROUTE TO GET/FIND ALL WORKOUTS("/api/workouts")
     app.get("/api/workouts", (req, res) => {
-        Workout.find({}, (err, data) => {
+        db.Workout.find({}, (err, data) => {
             if (err) throw err;
             res.json(data);
         });
@@ -16,7 +17,7 @@ module.exports = function (app) {
 
     //API ROUTE TO GET/FIND 
     app.get("/api/workouts/range", (req, res) => {
-        Workout.find({}, (err, data) => {
+        db.Workout.find({}, (err, data) => {
             if (err) throw err;
             res.json(data);
         });
@@ -24,7 +25,7 @@ module.exports = function (app) {
 
     //API ROUTE TO POST/CREATE A NEW WORKOUT
     app.post("/api/workouts", (req,res) => {
-        Workout.create({}, (err, data) => {
+       db.Workout.create({}, (err, data) => {
             if (err) throw err;
             res.json(data);
         });
@@ -32,7 +33,7 @@ module.exports = function (app) {
 
     //API ROUTE TO PUT/UPDATE A WORKOUT
     app.put("/api/workouts/:id", ({ body, params }, res) => {
-        Workout.findByIdAndUpdate(params.id, { $push: { exercises : body } }, (err, data) => {
+        db.Workout.findByIdAndUpdate(params.id, { $push: { exercises : body } }, (err, data) => {
             if (err) throw err;
             res.json(data);
         })
