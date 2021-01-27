@@ -15,7 +15,9 @@
 
 ## Description
 
-<p> This application was created to view, create, and track daily workouts. So that a user can log multiple exercies in a workout routine on a given day. You can also track the name, type, weight, sets, reps, and duration of the exercise. The application aws built upon starter code that was provided to me</p>
+<p> This application was created to view, create, and track daily workouts. So that a user can log multiple exercies in a workout routine on a given day. You can also track the name, type, weight, sets, reps, and duration of the exercise.</p>
+
+<p></p>
 
 <br>
 
@@ -23,7 +25,7 @@
 
 
 
-![Usage-Gif](./public/assets/gifs/Good-Burger.gif)
+![Usage-Gif](./public/assets/gifs/Fitness-Tracker.gif)
 
 
 <p>This is application is simple and easy to use! Navigate to the end of this read me, or use the table of contents to find the deployed app url. Once located click on it. You will then be brought to the application deployed by Heroku. You can start using the app! Simply click on the "New Workout" button to create a new workout plan.</p>
@@ -53,7 +55,7 @@
 
 * [Heroku-Deployed-App](https://salty-hamlet-96659.herokuapp.com/)
 * [GitHub-Repository](https://github.com/dmitriso/Fitness-Tracker)
-* [Usage-Video-Guide]()
+* [Usage-Video-Guide](https://youtu.be/7awZ3ZAUY4w)
 
 <br>
 
