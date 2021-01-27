@@ -15,17 +15,21 @@ module.exports = function (app) {
         });
     });
 
-    //API ROUTE TO GET/FIND 
+    //API ROUTE TO GET/FIND WORKOUTS BY RANGE
     app.get("/api/workouts/range", (req, res) => {
-        db.Workout.find({}, (err, data) => {
+        const startDate = new Date(new Date().setDate(new Date().getDate() - 7));
+        console.log(startDate);
+        console.log(new Date(Date.now()));
+        db.Workout.find({ day:{$gte: startDate}}, (err, data) => {
             if (err) throw err;
+            console.log(data);
             res.json(data);
-        }).limit(7);
+        });
     });
 
     //API ROUTE TO POST/CREATE A NEW WORKOUT
-    app.post("/api/workouts", (req,res) => {
-       db.Workout.create({}, (err, data) => {
+    app.post("/api/workouts", (req, res) => {
+        db.Workout.create({}, (err, data) => {
             if (err) throw err;
             res.json(data);
         });
@@ -33,9 +37,9 @@ module.exports = function (app) {
 
     //API ROUTE TO PUT/UPDATE A WORKOUT
     app.put("/api/workouts/:id", ({ body, params }, res) => {
-        db.Workout.findByIdAndUpdate(params.id, { $push: { exercises : body } }, (err, data) => {
+        db.Workout.findByIdAndUpdate(params.id, { $push: { exercises: body } }, (err, data) => {
             if (err) throw err;
             res.json(data);
-        })
-    })
+        });
+    });
 }
