@@ -20,7 +20,7 @@ module.exports = function (app) {
         db.Workout.find({}, (err, data) => {
             if (err) throw err;
             res.json(data);
-        });
+        }).limit(7);
     });
 
     //API ROUTE TO POST/CREATE A NEW WORKOUT
